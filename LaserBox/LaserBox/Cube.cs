@@ -11,22 +11,19 @@ namespace LaserBox
 
     public class Cube
     {
+        private Texture2D texture;
+        private Vector2 position;
+        private Rectangle hitBox = new Rectangle();
+        private int width = 68;
+        private int height = 65;
 
-        Texture2D texture;
-        Vector2 position;
-        Rectangle hitBox = new Rectangle();
-
-
-        public void setPosition(Vector2 p)
+        public void setPosition(Vector2 position)
         {
-            position = p;
+            this.position = position;
 
             hitBox.X = (int)position.X;
             hitBox.Y = (int)position.Y;
         }
-
-
-
 
         public Rectangle getHitBox()
         {
@@ -38,17 +35,14 @@ namespace LaserBox
             return position;
         }
 
-
-
-        public Cube(Vector2 p)
+        public Cube(Vector2 position)
         {
-            position = p;
+            this.position = position;
 
             hitBox.X = (int)position.X;
             hitBox.Y = (int)position.Y;
-
-            hitBox.Width = 68;
-            hitBox.Height = 65;
+            hitBox.Width = width;
+            hitBox.Height = height;
         }
 
 
@@ -59,8 +53,6 @@ namespace LaserBox
 
             hitBox.X = (int)position.X;
             hitBox.Y = (int)position.Y;
-
-            
         }
 
 
@@ -74,13 +66,10 @@ namespace LaserBox
 
         private void drawHitBox(SpriteBatch sb)
         {
-
             sb.Draw(texture, new Vector2(hitBox.X, hitBox.Y), null, Color.Gold, 0, new Vector2(0, 0), 0.1f, SpriteEffects.None, 1);
             sb.Draw(texture, new Vector2(hitBox.X + hitBox.Width, hitBox.Y), null, Color.Gold, 0, new Vector2(0, 0), 0.1f, SpriteEffects.None, 1);
             sb.Draw(texture, new Vector2(hitBox.X, hitBox.Y + hitBox.Height), null, Color.Gold, 0, new Vector2(0, 0), 0.1f, SpriteEffects.None, 1);
             sb.Draw(texture, new Vector2(hitBox.X + hitBox.Width, hitBox.Y + hitBox.Height), null, Color.Gold, 0, new Vector2(0, 0), 0.1f, SpriteEffects.None, 1);
-
-
         }
 
     }
